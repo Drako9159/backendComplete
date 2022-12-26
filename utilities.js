@@ -1,1 +1,1 @@
-//npm install express dotenv cors multer nodemon -S
+//npm install express dotenv cors multer nodemon mongoose -S
