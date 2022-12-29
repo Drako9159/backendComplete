@@ -3,7 +3,7 @@ const { validationResult } = require("express-validator");
 function validateResults(req, res, next) {
   try {
     validationResult(req).throw();
-    return next();
+    return next(); //TODO Continua hacia el controlador
   } catch (err) {
     res.status(403);
     res.send({ errors: err.array() });

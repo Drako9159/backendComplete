@@ -8,11 +8,10 @@ function removeExtension(fileName) {
   return fileName.split(".").shift();
 }
 
-
-
 fs.readdirSync(PATH_ROUTES).filter((file) => {
   const name = removeExtension(file); //TODO index, tracks etc
   if (name !== "index") {
+    console.log(name)
     router.use(`/${name}`, require(`./${file}`)); //TODO localhost/api/tracks
   }
 });

@@ -14,13 +14,14 @@ app.use(express.json());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "/storage")));
 
-//routes
+//routes en orden
+app.use("/api", require("./routes"));
 app.use("/api", require("./routes/tracks.routes"));
 app.use("/api", require("./routes/storage.routes"));
-app.use("/api", require("./routes"));
-/*
+
+
 app.use((req, res, next) => {
   res.status(404).send("404 Not Found");
-});*/
+});
 
 module.exports = app;

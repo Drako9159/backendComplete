@@ -4,15 +4,34 @@ const {
   getItems,
   getItem,
   createItem,
+  updateItem,
+  deleteItem
 } = require("../controllers/tracks.controller");
 
-const { validatorCreateItem } = require("../validators/tracks")
+const { validatorCreateItem,  validatorGetItem  } = require("../validators/tracks")
+const customHeader = require("../middleware/customHeader")
 
 //localhost/tracks/GET,POST,DELETE,PUT
-router.get("/",  getItems);
-
+/**
+ * Obtiene items
+ */
+router.get("/", getItems);
+/**
+ * Obtiene item
+ */
+router.get("/:id", validatorGetItem, getItem);
+/**
+ * Crea un item
+ */
 router.post("/", validatorCreateItem, createItem);
-
+/**
+ *  Actualiza registro
+ */
+router.put("/:id", validatorGetItem, validatorCreateItem, updateItem);
+/**
+ *  Borrar item
+ */
+router.delete("/:id", validatorGetItem, deleteItem);
 module.exports = router;/*
 const purple = {
   "name": "Drako",
@@ -27,6 +46,6 @@ const purple = {
     "start": 1,
     "end": 0
   },
-  "mediaId": "88623847ijwhsrf687we6tui"
+  "mediaId": "63aa380190f5df3692e97a9a"
 };
 */

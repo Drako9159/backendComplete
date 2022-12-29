@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const mongooseDelete = require("mongoose-delete");
 const UserSchema = new mongoose.Schema(
   {
     name: {
@@ -25,5 +25,6 @@ const UserSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
+UserSchema.plugin(mongooseDelete, { overrideMethods: "all" });
 module.exports = mongoose.model("users", UserSchema)
 //users es el nombre de la tabla
