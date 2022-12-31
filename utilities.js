@@ -1,1 +1,1 @@
-//npm install express dotenv cors multer nodemon mongoose express-validator mongoose-delete -S
+//npm install express dotenv cors multer nodemon mongoose express-validator mongoose-delete jsonwebtoken bcryptjs -S
