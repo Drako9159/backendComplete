@@ -9,9 +9,9 @@ function dbConnect() {
     },
     (err, res) => {
       if (!err) {
-        console.log("correct connection");
+        console.log("MONGO_ESTABLISHED_CONNECTION");
       } else {
-        console.log("error connection");
+        console.log("MONGO_ERROR_CONNECTION");
       }
     }
   );

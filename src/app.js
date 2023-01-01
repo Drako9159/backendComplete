@@ -2,8 +2,16 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const app = express();
-const dbConnect = require("./config/mongo");
-dbConnect();
+//Selection type db
+const ENGINE_DB = process.env.ENGINE_DB
+
+const dbConnectNosql = require("./config/mongo");
+const { dbConnectMysql } = require("./config/mysql");
+(ENGINE_DB === "nosql" ? dbConnectNosql() : dbConnectMysql())
+
+//dbConnectNosql();
+
+
 app.set("port", process.env.PORT || 3000);
 
 app.use(cors());
@@ -14,9 +22,12 @@ app.use(express.json());
 const path = require("path");
 app.use(express.static(path.join(__dirname, "/storage")));
 
+
+
 //Logger
 const loggerStream = require("./utils/handleLogger");
 const morganBody = require("morgan-body");
+const dbConnect = require("./config/mongo");
 morganBody(app, {
   noColors: true,
   stream: loggerStream,
