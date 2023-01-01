@@ -5,34 +5,37 @@ const {
   getItem,
   createItem,
   updateItem,
-  deleteItem
+  deleteItem,
 } = require("../controllers/tracks.controller");
 
-const { validatorCreateItem,  validatorGetItem  } = require("../validators/tracks")
-
-
+const {
+  validatorCreateItem,
+  validatorGetItem,
+} = require("../validators/tracks");
+const authMiddleware = require("../middleware/session");
+const checkRol = require("../middleware/rol");
 //localhost/tracks/GET,POST,DELETE,PUT
 /**
  * Obtiene items
  */
-router.get("/", getItems);
+router.get("/", authMiddleware, getItems);
 /**
  * Obtiene item
  */
-router.get("/:id", validatorGetItem, getItem);
+router.get("/:id", authMiddleware, validatorGetItem, getItem);
 /**
  * Crea un item
  */
-router.post("/", validatorCreateItem, createItem);
+router.post("/", authMiddleware, validatorCreateItem, createItem);
 /**
  *  Actualiza registro
  */
-router.put("/:id", validatorGetItem, validatorCreateItem, updateItem);
+router.put("/:id", authMiddleware, validatorGetItem, validatorCreateItem, updateItem);
 /**
  *  Borrar item
  */
-router.delete("/:id", validatorGetItem, deleteItem);
-module.exports = router;/*
+router.delete("/:id", authMiddleware, validatorGetItem, deleteItem);
+module.exports = router; /*
 const purple = {
   "name": "Drako",
   "album": "ultrainsint",
