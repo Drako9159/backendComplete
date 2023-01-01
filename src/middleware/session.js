@@ -1,5 +1,6 @@
 const { verifyToken } = require("../utils/handleJwt");
 const { handleError } = require("../utils/hanldeError");
+const { usersModel } = require("../models");
 
 async function authMiddleware(req, res, next) {
   try {
@@ -13,9 +14,14 @@ async function authMiddleware(req, res, next) {
       handleError(res, "ERROR_ID_TOKEN", 401);
       return;
     }
+    const user = await usersModel.findById(dataToken._id)
+    req.user = user
+  
     next();
   } catch (error) {
     handleError(res, "NOT_SESSION", 401);
   }
 }
+
+
 module.exports = authMiddleware;

@@ -51,7 +51,7 @@ async function loginController(req, res) {
     user.set("password", undefined, { strict: false });
 
     const data = {
-      token: tokenSign(user),
+      token: await tokenSign(user),
       user,
     };
     res.send({ data });

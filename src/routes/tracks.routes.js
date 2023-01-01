@@ -26,7 +26,7 @@ router.get("/:id", authMiddleware, validatorGetItem, getItem);
 /**
  * Crea un item
  */
-router.post("/", authMiddleware, validatorCreateItem, createItem);
+router.post("/", authMiddleware, checkRol(["admin"]), validatorCreateItem, createItem);
 /**
  *  Actualiza registro
  */
@@ -35,7 +35,8 @@ router.put("/:id", authMiddleware, validatorGetItem, validatorCreateItem, update
  *  Borrar item
  */
 router.delete("/:id", authMiddleware, validatorGetItem, deleteItem);
-module.exports = router; /*
+module.exports = router; 
+/*
 const purple = {
   "name": "Drako",
   "album": "ultrainsint",
