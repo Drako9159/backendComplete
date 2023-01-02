@@ -8,7 +8,8 @@ const { handleError } = require("../utils/hanldeError");
 
 async function getItems(req, res) {
   try {
-    const data = await storageModel.find({});
+    //find all for myslq/find for mongo
+    const data = await storageModel.findAll({});
     res.send({ data });
   } catch (error) {
     handleError(res, "ERROR_ITEMS_STORAGE", 403);
@@ -17,7 +18,8 @@ async function getItems(req, res) {
 async function getItem(req, res) {
   try {
     const { id } = matchedData(req);
-    const data = await storageModel.findById(id);
+    //findByPk for mysql/findById for mongo
+    const data = await storageModel.findByPk(id);
     res.send({ data });
   } catch (error) {
     handleError(res, "ERROR_ITEM_STORAGE", 403);
@@ -35,6 +37,7 @@ async function createItem(req, res) {
     const data = await storageModel.create(fileDate);
     res.send({ data });
   } catch (error) {
+    
     handleError(res, "ERROR_CREATE_STORAGE", 403);
   }
 }
