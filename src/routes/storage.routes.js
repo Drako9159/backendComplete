@@ -9,7 +9,7 @@ const {
 } = require("../controllers/storage.controller");
 const { validatorGetItem } = require("../validators/storage");
 
-router.get("/", getItems);
+router.get("/", validatorGetItem, getItems);
 
 router.get("/:id", validatorGetItem, getItem);
 

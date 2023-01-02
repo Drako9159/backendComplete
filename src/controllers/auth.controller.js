@@ -49,15 +49,14 @@ async function loginController(req, res) {
       return;
     }
     //TODO vuelve a ocultar el password
-    //user.set("password", undefined, { strict: false });
+    user.set("password", undefined, { strict: false });
 
     const data = {
-      token: await tokenSign(user),
+      token: tokenSign(user),
       user,
     };
     res.send({ data });
   } catch (error) {
-    console.log(error)
     handleError(res, "ERROR_LOGIN_USER", 403);
   }
 }

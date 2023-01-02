@@ -18,7 +18,7 @@ const checkRol = require("../middleware/rol");
 /**
  * Obtiene items
  */
-router.get("/", authMiddleware, getItems);
+router.get("/", /*authMiddleware,*/ getItems);
 /**
  * Obtiene item
  */
@@ -66,6 +66,8 @@ const purple = {
     "start": 1,
     "end": 0
   },
-  "mediaId": "63b28888c73edf879b4377cd"
+  "mediaId": "5"
 }
+
+63b286174c46916b03e61c76
 */

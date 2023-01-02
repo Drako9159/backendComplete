@@ -38,28 +38,54 @@ const TracksSchema = new mongoose.Schema(
       },
     },
     mediaId: {
-      tpye: mongoose.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
     },
   },
   {
-    timestamps: true, //TODO createdAt, updatedAt
     versionKey: false,
+    timestamps: true, //TODO createdAt, updatedAt
   }
 );
 /**
  * Método crea una relación a storage
  */
+
 TracksSchema.statics.findAllData = function () {
   const joinData = this.aggregate([
     {
       $lookup: {
         from: "storages", //TODO tracks --> storages
-        localField: "mediaId", //Tracks.mdiaId
+        localField: "mediaId", //Tracks.mediaId
         foreignField: "_id", //Storages._id
         as: "audio", //Alias
       },
     },
-    
+    {
+      $unwind: "$audio",
+    },
+  ]);
+  return joinData;
+  //return this.find({ name:new RegExp(name, "i") })
+};
+
+TracksSchema.statics.findOneData = function (id) {
+  const joinData = this.aggregate([
+    {
+      $match: {
+        _id: mongoose.Types.ObjectId(id),
+      },
+    },
+    {
+      $lookup: {
+        from: "storages", //TODO tracks --> storages
+        localField: "mediaId", //Tracks.mediaId
+        foreignField: "_id", //Storages._id
+        as: "audio", //Alias
+      },
+    },
+    {
+      $unwind: "$audio",
+    },
   ]);
   return joinData;
   //return this.find({ name:new RegExp(name, "i") })

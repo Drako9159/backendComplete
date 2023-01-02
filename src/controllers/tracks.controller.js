@@ -4,7 +4,7 @@ const { handleError } = require("../utils/hanldeError");
 
 async function getItems(req, res) {
   try {
-    //const user = req.user;
+    //findAllData for mysql
     const data = await tracksModel.findAllData({});
     res.send({ data });
   } catch (error) {
@@ -15,7 +15,7 @@ async function getItem(req, res) {
   try {
     req = matchedData(req);
     const { id } = req;
-    const data = await tracksModel.findById(id);
+    const data = await tracksModel.findOneData(id);
     res.send({ data });
   } catch (error) {
     handleError(res, "ERROR_GET_ITEM", 403);
@@ -25,7 +25,9 @@ async function createItem(req, res) {
   try {
     //function de express-validator que limpia lo que no se espesifica
     const body = matchedData(req);
+    
     const data = await tracksModel.create(body);
+    console.log(data)
     res.send({ data });
   } catch (error) {
     handleError(res, "ERROR_CREATE_ITEMS", 403);
