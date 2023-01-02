@@ -46,6 +46,25 @@ const TracksSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
+/**
+ * Método crea una relación a storage
+ */
+TracksSchema.statics.findAllData = function () {
+  const joinData = this.aggregate([
+    {
+      $lookup: {
+        from: "storages", //TODO tracks --> storages
+        localField: "mediaId", //Tracks.mdiaId
+        foreignField: "_id", //Storages._id
+        as: "audio", //Alias
+      },
+    },
+    
+  ]);
+  return joinData;
+  //return this.find({ name:new RegExp(name, "i") })
+};
+
 //sobreescribe los metodos con el plugin
 TracksSchema.plugin(mongooseDelete, { overrideMethods: "all" });
 module.exports = mongoose.model("tracks", TracksSchema);

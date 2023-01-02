@@ -4,7 +4,8 @@ const { handleError } = require("../utils/hanldeError");
 
 async function getItems(req, res) {
   try {
-    const data = await tracksModel.find({});
+    //const user = req.user;
+    const data = await tracksModel.findAllData({});
     res.send({ data });
   } catch (error) {
     handleError(res, "ERROR_GET_ITEMS", 403);
@@ -27,7 +28,6 @@ async function createItem(req, res) {
     const data = await tracksModel.create(body);
     res.send({ data });
   } catch (error) {
-    console.log(error)
     handleError(res, "ERROR_CREATE_ITEMS", 403);
   }
 }
