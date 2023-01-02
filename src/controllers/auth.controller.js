@@ -36,7 +36,8 @@ async function loginController(req, res) {
     //TODO select para que sí traiga password
     const user = await usersModel
       .findOne({ email: req.email })
-      .select("password name role email");
+      //select es de mongo
+      //.select("password name role email");
     if (!user) {
       handleError(res, "USER_NOT_EXISTS", 404);
       return;

@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, "/storage")));
 //Logger
 const loggerStream = require("./utils/handleLogger");
 const morganBody = require("morgan-body");
-const dbConnect = require("./config/mongo");
+//const dbConnect = require("./config/mongo");
 morganBody(app, {
   noColors: true,
   stream: loggerStream,

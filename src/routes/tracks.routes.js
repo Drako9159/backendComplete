@@ -26,7 +26,7 @@ router.get("/:id", authMiddleware, validatorGetItem, getItem);
 /**
  * Crea un item
  */
-router.post("/", authMiddleware, checkRol(["admin"]), validatorCreateItem, createItem);
+router.post("/", authMiddleware, checkRol(["admin", "user"]), validatorCreateItem, createItem);
 /**
  *  Actualiza registro
  */
@@ -52,4 +52,20 @@ const purple = {
   },
   "mediaId": "63aa380190f5df3692e97a9a"
 };
+
+{
+  "name": "Drako",
+  "album": "ultrainsint",
+  "cover": "http://tttt.com",
+  "artist": {
+    "name": "Drakito",
+    "nickname": "drako9159",
+    "nationality": "MX"
+  },
+  "duration": {
+    "start": 1,
+    "end": 0
+  },
+  "mediaId": "1"
+}
 */

@@ -9,7 +9,7 @@ const Tracks = sequelize.define(
             allowNull: false,
         },
         album: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.STRING,
         },
         cover: {
             type: DataTypes.STRING,
@@ -30,7 +30,7 @@ const Tracks = sequelize.define(
             type: DataTypes.INTEGER,
         },
         mediaId: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         }
     },
     {
