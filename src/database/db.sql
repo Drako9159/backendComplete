@@ -24,7 +24,20 @@ CREATE TABLE
         artist_nationality VARCHAR(150) NOT NULL,
         duration_start INTEGER NOT NULL,
         duration_end INTEGER NOT NULL,
-        mediaId INTEGER NOT NULL,
+        mediaId VARCHAR(150) NOT NULL,
+        createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+
+CREATE TABLE
+    tracks (
+        id INTEGER PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(150) NOT NULL,
+        album VARCHAR(150) NOT NULL,
+        cover VARCHAR(150) NOT NULL,
+        artist_name VARCHAR(150) NOT NULL,
+        artist_nickname VARCHAR(150) NOT NULL,
+        artist_nationality VARCHAR(150) NOT NULL,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
     );

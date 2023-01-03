@@ -10,8 +10,8 @@ const StorageSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, //TODO createdAt, updatedAt
     versionKey: false,
+    timestamps: true, //TODO createdAt, updatedAt
   }
 );
 StorageSchema.plugin(mongooseDelete, { overrideMethods: "all" });

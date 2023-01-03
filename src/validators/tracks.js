@@ -29,7 +29,7 @@ const validatorCreateItem = [
   check("artist.nationality")
   .exists()
   .notEmpty(),
-
+  
   check("duration")
   .exists()
   .notEmpty(),
@@ -46,7 +46,7 @@ const validatorCreateItem = [
   .exists()
   .notEmpty(),
   //.isMongoId(),
-
+  
   (req, res, next) => {
     return validateResults(req, res, next)
   }

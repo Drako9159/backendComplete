@@ -18,7 +18,7 @@ const checkRol = require("../middleware/rol");
 /**
  * Obtiene items
  */
-router.get("/", /*authMiddleware,*/ getItems);
+router.get("/", authMiddleware, getItems);
 /**
  * Obtiene item
  */

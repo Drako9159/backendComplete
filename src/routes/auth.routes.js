@@ -20,8 +20,9 @@ router.post("/login", validatorLogin, loginController);
     "password": "drakolin"
 }
 {
-    "email": "chasdoc9159@gmail.com",
+    "email": "chochitod9159@gmail.com",
     "password": "drakolin"
 }
+
 */
 module.exports = router;
